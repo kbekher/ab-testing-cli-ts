@@ -1,0 +1,38 @@
+{
+  "name": "ab-testing-cli-ts",
+  "version": "1.0.0",
+  "description": "A command line interface tool designed to streamline the creation of A/B test boilerplate code, as well as creation and updates of experiments in Kameleoon.",
+  "license": "MIT",
+  "author": {
+    "name": "Kristina Bekher",
+    "email": "k.bekher@douglas.de"
+  },
+  "contributors": [
+    {
+      "name": "Max Vith",
+      "email": "ma.vith@douglas.de"
+    }
+  ],
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "ab-test": "dist/index.js"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc",
+    "start": "ts-node src/index.tsx"
+  },
+  "dependencies": {
+    "ink": "^6.0.1",
+    "ink-text-input": "^6.0.0",
+    "react": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.14",
+    "@types/react": "^19.1.8",
+    "esbuild": "^0.25.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
