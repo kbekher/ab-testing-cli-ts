@@ -20,12 +20,11 @@ With this tool, you can quickly generate the necessary structure and components 
 
 ## 📦 Installation
  
- Hint Remove old link: rm /Users/k.bekher/.nvm/versions/node/v21.7.3/bin/ab-test
-
- Steps to run CLI: 
+ Steps to re-run CLI: 
+ Hint Remove old link: rm /Users/k.bekher/.nvm/versions/node/v21.7.3/bin/abtest
  npm run build
  npm link 
- ab-test
+ abtest create
 
 ## 🔐 Kameleoon API Configuration
 
