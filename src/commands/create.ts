@@ -2,8 +2,6 @@ import * as fs from "fs";
 import path from 'node:path';
 import { CreateCommandInput } from '../types/types.js';
 
-type CreateStatus = { message: string; done?: boolean };
-
 async function copyFolder(src: string, dest: string) {
   fs.cpSync(src, dest, { recursive: true });
 }
