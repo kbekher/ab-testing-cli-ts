@@ -10,11 +10,9 @@ async function create(data: CreateCommandInput) {
   const {
     ticket,
     name,
-    country,
     isNewControl,
     variations,
     global,
-    goals = false,
   } = data;
 
   try {

@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-A command-line interface (CLI) tool designed to streamline the creation of A/B test boilerplate code, as well as the creation and management of experiments in Kameleoon.
+A command-line interface (CLI) tool built with **TypeScript** and **Ink**, designed to streamline the creation of A/B test boilerplate code, as well as the creation and management of experiments in Kameleoon.
 
 With this tool, you can quickly generate the necessary structure and components needed to set up A/B tests for your projects — saving time and ensuring consistency.
 
@@ -13,18 +13,77 @@ With this tool, you can quickly generate the necessary structure and components 
 - Full integration with the [Kameleoon API](https://developers.kameleoon.com/)
 - CLI-based experiment creation, goal setup, and variation assignment
 - Auto-generated folders and dev environment
-- Webpack-based builds that automatically update your Kameleoon code
+- Webpack-based builds that automatically update your Kameleoon scripts
 - Compatible with [@douglas.onsite.experimentation/douglas-ab-testing-toolkit](https://www.npmjs.com/package/@douglas.onsite.experimentation/douglas-ab-testing-toolkit)
 
 ---
 
 ## 📦 Installation
- 
- Steps to re-run CLI: 
- Hint Remove old link: rm /Users/k.bekher/.nvm/versions/node/v21.7.3/bin/abtest
- npm run build
- npm link 
- abtest create
+
+### Prerequisites
+- **Node.js v18+** (tested with v21.7.3)
+- **npm** (comes with Node)
+- A valid **Kameleoon account** and API credentials (see [Kameleoon API Configuration](#-kameleoon-api-configuration))
+
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/kbekher/ab-testing-cli-ts.git
+cd ab-testing-cli-ts
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Build and link the CLI globally
+
+This compiles the TypeScript code into dist/ and links the ab-test command to your system’s global path:
+
+```bash
+npm run build:link
+```
+
+### 4. Verify installation
+
+Run the following to check that the CLI is available globally:
+
+```bash
+ab-test create
+```
+
+This will trigger the experiment creation flow. 🚀
+
+### 🚀 Re-run the CLI (Quick Method)
+
+To refresh your CLI after making changes:
+
+```bash
+# Remove old symlink and rebuild
+npm run build:link
+
+# Create a new test
+ab-test create
+```
+
+In case you get an error, try: 
+
+```bash
+# Remove existing CLI binary
+rm ~/.nvm/versions/node/v21.7.3/bin/ab-test
+
+# Rebuild the project
+npm run build
+
+# Link the CLI globally
+npm link
+
+# Create a new test
+ab-test create
+```
 
 ## 🔐 Kameleoon API Configuration
 

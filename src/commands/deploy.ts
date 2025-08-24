@@ -2,6 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 import os from 'os';
+import { execSync, spawn } from 'child_process';
 import { CreateCommandInput } from '../types/types.js';
 import { getFormattedDate, getProjectDomain } from '../utils/utils.js';
 
@@ -148,7 +149,11 @@ export const deploy = async (
 
     const deviations = Object.fromEntries(variationIds.map(id => [id, 0]));
 
+    // display updates before navigating to new package
     onUpdate({ message: 'Finalizing experiment...' });
+    onUpdate({ message: `Changing directory to ${destinationDir}...` });
+    onUpdate({ message: 'Installing packages...'});
+
     await sendRequest('PATCH', `${urls.experimentList}/${experiment.id}`, token, {
       deviations,
       goals: goalsIds,
@@ -164,7 +169,14 @@ export const deploy = async (
       JSON.stringify({ experimentId: experiment.id, variationIds: sortedVariationIds }, null, 2)
     );
 
-    onUpdate({ message: `Navigate to ${projectName} directory and start development`, done: true });
+    // Navigate to directory and run npm install
+    process.chdir(destinationDir);
+    execSync('npm install', { stdio: 'inherit' });
+
+    onUpdate({ 
+      message: `\n🚀 To start development run:\n\n cd ${destinationDir}\n npm run dev\n`, 
+      done: true 
+    });
 
   } catch (error: any) {
     throw new Error(`Error creating experiment: ${error.message}`);
