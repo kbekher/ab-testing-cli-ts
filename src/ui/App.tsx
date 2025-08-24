@@ -8,44 +8,23 @@ import { steps } from '../config/steps.js';
 import Gradient from 'ink-gradient';
 import BigText from 'ink-big-text';
 import CreateStatus from '../components/CreateStatus.js';
-// import { installAndRunDev } from '../utils/runDev.js';
-// import Spinner from 'ink-spinner';
 
 const App: React.FC = () => {
   const { exit } = useApp();
   const [step, setStep] = useState<StepKey>('ticket');
   const [input, setInput] = useState<string>('');
   const [data, setData] = useState<Partial<CreateCommandInput>>({});
-  const [dir, setDir] = useState<string | null>(null);
-  const [logs, setLogs] = useState<string[]>([]);
-  const [isInstalling, setIsInstalling] = useState<boolean>(false);
 
   // For goals collecting
   const [goals, setGoals] = useState<string[]>([]);
 
   const currentStep = steps.find(s => s.key === step);
 
-  useInput((input, key) => {
+  useInput(input => {
     if (input === 'q') {
       exit();
     }
   });
-
-  // // Run dev server when dir is set
-  // useEffect(() => {
-  //   if (dir) {
-  //     console.log('Running installAndRunDev for', dir); // Debug
-  //     setIsInstalling(true);
-  //     installAndRunDev(
-  //       dir,
-  //       (msg: string) => setLogs(prev => [...prev, msg]),
-  //       () => {
-  //         setLogs(prev => [...prev, 'Exiting CLI...']);
-  //         setTimeout(exit, 1000);
-  //       }
-  //     );
-  //   }
-  // }, [dir]);
 
   const handleSubmit = () => {
     switch (step) {
@@ -107,28 +86,9 @@ const App: React.FC = () => {
 
   if (step === 'done') {
     return (
-      <CreateStatus
-        data={data as CreateCommandInput}
-        // onComplete={(destinationDir: string) => {
-        //   console.log('DIR set:', destinationDir); // Debug
-        //   setDir(destinationDir);
-        // }}
-      />
+      <CreateStatus data={data as CreateCommandInput} />
     );
   }
-
-  // if (isInstalling) {
-  //   return (
-  //     <Box flexDirection="column">
-  //       <Text color="cyan">
-  //         <Spinner type="dots" /> Installing and starting dev server...
-  //       </Text>
-  //       {logs.slice(-10).map((log, i) => (
-  //         <Text key={i}>{log.trim()}</Text>
-  //       ))}
-  //     </Box>
-  //   );
-  // }
 
   return (
     <Box flexDirection="column">

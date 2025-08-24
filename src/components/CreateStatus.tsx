@@ -9,13 +9,9 @@ import Gradient from 'ink-gradient';
 
 interface Props {
   data: CreateCommandInput;
-  // onComplete: (destinationDir: string) => void;
 }
 
-const CreateStatus: React.FC<Props> = ({ 
-  data, 
-  // onComplete 
-}) => {
+const CreateStatus: React.FC<Props> = ({ data }) => {
   const { exit } = useApp();
   const [statuses, setStatuses] = useState<string[]>(['Initializing directory...']);
   const [done, setDone] = useState(false);
@@ -38,7 +34,6 @@ const CreateStatus: React.FC<Props> = ({
               setTimeout(() => {
                 exit();
               }, 1000);
-              // onComplete(result.destinationDir);
             }
           });
         }, 1000);

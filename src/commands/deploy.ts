@@ -1,8 +1,7 @@
-// deploy.ts
 import fs from 'fs';
 import path from 'path';
 import os from 'os';
-import { execSync, spawn } from 'child_process';
+import { execSync } from 'child_process';
 import { CreateCommandInput } from '../types/types.js';
 import { getFormattedDate, getProjectDomain } from '../utils/utils.js';
 
