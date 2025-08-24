@@ -57,7 +57,7 @@ ab-test create
 
 This will trigger the experiment creation flow. 🚀
 
-### 🚀 Re-run the CLI (Quick Method)
+### Re-run the CLI (Quick Method)
 
 To refresh your CLI after making changes:
 
