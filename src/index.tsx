@@ -12,7 +12,6 @@ program
   .description('CLI to create and manage A/B tests')
   .version('1.0.0');
 
-// abtest create // TODO: change command
 program
   .command('create')
   .description('Create a new A/B Test project')
